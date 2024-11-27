@@ -67,11 +67,10 @@
     align-items: center;
     justify-content: center;
 }
-.hide-div span:hover{
+.hide-div span:hover {
     background-color: rgba(243, 18, 18,0.6);
 }
-
-.day-date{
+.day-date {
     font-size: large;
     font-weight: 600;
 }
