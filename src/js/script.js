@@ -26,6 +26,8 @@ cityInputForm.addEventListener('submit', async function(event){
     }
     
     result.innerHTML = 'Loading...';
+    document.querySelector('.weather-forecast').style.display = 'none';
+    document.querySelector('.hourly-forecast').style.display = 'none';
 
     try{
         const weatherData = await  getWeatherData(cityName);
