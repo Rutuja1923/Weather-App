@@ -98,3 +98,14 @@ header p {
 footer p {
     margin: 2px auto;
 }
+
+footer a {
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    color: black;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
