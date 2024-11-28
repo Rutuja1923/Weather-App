@@ -13,6 +13,11 @@ app.use(cors());
 
 const PORT = 3000;
 
+// main root
+app.get('/', (req, res) => {
+    res.send('Welcome to the Weather App!');
+});
+
 //route to handle API calls
 app.get('/weather', async (req, res) => {
     const apiKey = process.env.API_KEY;
