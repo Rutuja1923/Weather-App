@@ -11,6 +11,49 @@ async function getWeatherData(city){
     return data;
 }
 
+async function getLiveWeatherData(lat, lon) {
+    const response = await fetch(`http://localhost:3000/weather/live?lat=${lat}&lon=${lon}`);
+    if (response.status === 404) {
+        return { error: 'City not found' };
+    }
+    if (!response.ok) {
+        return { error: 'Failed to fetch weather data' };
+    }
+    return await response.json();
+}
+
+document.getElementById('liveWeatherBtn').addEventListener('click', function() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async (position) => {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            const result = document.querySelector('.current-weather');
+            result.style.display = 'block';
+            result.innerHTML = 'Fetching location-based weather...';
+
+            try {
+                const weatherData = await getLiveWeatherData(lat, lon);
+                if (weatherData.error) {
+                    result.innerHTML = weatherData.error;
+                    return;
+                }
+                displayWeather(weatherData);
+                displayForecast(weatherData);
+            } 
+            catch (error) {
+                console.error('Live location error:', error);
+                result.innerHTML = 'Failed to fetch location-based weather.';
+            }
+        }, (error) => {
+            console.error('Geolocation error:', error);
+            document.querySelector('.current-weather').innerHTML = 'Location access denied.';
+        });
+    } 
+    else {
+        document.querySelector('.current-weather').innerHTML = 'Geolocation not supported in your browser.';
+    }
+});
+
 const cityInputForm = document.getElementById('weatherForm');
 cityInputForm.addEventListener('submit', async function(event){
     event.preventDefault();
@@ -47,6 +90,7 @@ cityInputForm.addEventListener('submit', async function(event){
         result.innerHTML = 'An unexpected error occurred.';
     }
 });
+
 
 function displayWeather(weatherData){
     //get the div
