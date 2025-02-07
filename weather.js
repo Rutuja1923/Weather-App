@@ -37,14 +37,14 @@ app.get('/weather', async (req, res) => {
             forecast: forecastResponse.data,
         };
 
-        res.json(result);
+        return res.json(result);
     } 
     catch (error) {
         console.error('Error fetching data:', error);
         if (error.response && error.response.status === 404) {
             return res.status(404).json({ error: 'City not found' });
         }
-        res.status(500).json({ error: 'Failed to fetch weather data' });
+        return res.status(500).json({ error: 'Failed to fetch weather data' });
     }
 });
 
@@ -64,7 +64,7 @@ app.get('/weather/live', async (req, res) => {
             axios.get(`${apiBase}forecast?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
         ]);
 
-        res.json({
+        return res.json({
             currentWeather: currentWeatherResponse.data,
             forecast: forecastResponse.data,
         });
@@ -74,7 +74,7 @@ app.get('/weather/live', async (req, res) => {
         if (error.response && error.response.status === 404) {
             return res.status(404).json({ error: 'City not found' });
         }
-        res.status(500).json({ error: 'Failed to fetch weather data' });
+        return res.status(500).json({ error: 'Failed to fetch weather data' });
     }
 });
 
