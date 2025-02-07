@@ -49,3 +49,62 @@
 .info-titles {
     font-weight: 500;
 }
+
+@media (max-width: 768px) {
+    .current-weather {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .temperature-div,
+    .other-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .city-div {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .city-div p {
+        font-size: 18px;
+    }
+
+    .temperature-div img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .temp-div > #temp,
+    .desc-div > #desc {
+        font-size: medium;
+    }
+}
+
+@media (max-width: 480px) {
+    .current-weather {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .city-div p {
+        font-size: 16px;
+    }
+
+    .temperature-div img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .temp-div > #temp,
+    .desc-div > #desc {
+        font-size: small;
+    }
+
+    .info-titles {
+        font-size: small;
+    }
+}

@@ -74,3 +74,68 @@
     font-size: large;
     font-weight: 600;
 }
+
+@media (max-width: 768px) {
+    .hourly-forecast {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .sub-div {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .hour-div {
+        width: 100%;
+        padding: 8px;
+    }
+
+    .hour-div img {
+        height: 30px;
+        width: 30px;
+    }
+
+    .divOne,
+    .divTwo,
+    .divThree {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .hide-div {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hourly-forecast {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .sub-div {
+        gap: 3px;
+    }
+
+    .hour-div {
+        font-size: 12px;
+        border-radius: 8px;
+        padding: 5px;
+    }
+
+    .hour-div img {
+        height: 25px;
+        width: 25px;
+    }
+
+    .day-date {
+        font-size: medium;
+    }
+
+    .hide-div span {
+        width: 8px;
+        height: 8px;
+        font-size: 10px;
+    }
+}
